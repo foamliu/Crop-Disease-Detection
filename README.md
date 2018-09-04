@@ -1,6 +1,6 @@
-# 场景分类
+# 农作物病害检测
 
-微调 Inception-ResNet-V2, 解决 AI Challenger 2017 场景分类问题。
+微调 Inception-ResNet-V2, 解决 AI Challenger 2018 农作物病害检测问题。
 
 
 ## 依赖
@@ -12,26 +12,27 @@
 
 ## 数据集
 
-我们使用AI Challenger 2017中的场景分类数据集，其中包含80,900种场景的60,999张图像。 数据分为53,879个训练图像和7,120个测试图像。
+我们使用AI Challenger 2018中的农作物病害检测数据集，其中包含61类47,393张图像。 数据集随机分为训练（70%）、验证（10%）、测试A（10%）与测试B（10%）四个子数据集。
 
- ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/dataset.png)
+### 数据预览
+ ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/dataset.png)
 
-你可以从中得到它 [Scene Classification Dataset](https://challenger.ai/datasets/scene):
+你可以到 [这里](https://challenger.ai/dataset/pdd2018) 下载。
 
 ### 性能
-用14118张测试图片计算平均准确率(mAP)，结果如下：
+用 4,739 张测试图片计算平均准确率(mAP)，结果如下：
 
 | |Test A|Test B|
 |---|---|---|
-|图片数|7040|7078|
-|Top3准确度|0.94346|0.91212|
+|图片数|4739|4739|
+|Top3准确度|n/a|n/a|
 
 ## 用法
 
 ### 数据预处理
 提取60,999个训练图像，并将它们分开（53,879个用于训练，7,120个用于验证）：
 ```bash
-$ python pre-process.py
+$ python pre_process.py
 ```
 
 ### 训练
@@ -54,15 +55,15 @@ $ python demo.py
 1 | 2 | 3 | 4 |
 |---|---|---|---|
 |![image](https://github.com/foamliu/Scene-Classification/raw/master/images/0_out.png)  | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/1_out.png) | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/2_out.png)| ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/3_out.png) |
-|教室, prob: 0.751|修理店, prob: 0.4876|沙漠, prob: 0.9402|酒吧, prob: 0.8236|
+|$(result_0)|$(result_1)|$(result_2)|$(result_3)|
 |![image](https://github.com/foamliu/Scene-Classification/raw/master/images/4_out.png)  | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/5_out.png) | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/6_out.png)| ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/7_out.png) |
-|宫殿, prob: 0.6837|博物馆, prob: 0.6911|住宅, prob: 0.5338|会议室, prob: 0.9461|
+|$(result_4)|$(result_5)|$(result_6)|$(result_7)|
 |![image](https://github.com/foamliu/Scene-Classification/raw/master/images/8_out.png)  | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/9_out.png) |![image](https://github.com/foamliu/Scene-Classification/raw/master/images/10_out.png) | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/11_out.png)|
-|集市, prob: 0.9636|桥, prob: 0.571|航站楼, prob: 0.9362|游乐场, prob: 0.5429|
+|$(result_8)|$(result_9)|$(result_10)|$(result_11)|
 |![image](https://github.com/foamliu/Scene-Classification/raw/master/images/12_out.png)  | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/13_out.png) |![image](https://github.com/foamliu/Scene-Classification/raw/master/images/14_out.png)| ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/15_out.png)|
-|保龄球馆, prob: 0.9995|漂流, prob: 0.998|水族馆, prob: 0.9898|停机坪, prob: 0.9965|
+|$(result_12)|$(result_13)|$(result_14)|$(result_15)|
 |![image](https://github.com/foamliu/Scene-Classification/raw/master/images/16_out.png) | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/17_out.png) | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/18_out.png) | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/19_out.png) |
-|跑马场, prob: 0.9966|实验室, prob: 0.8698|滑雪场, prob: 0.8024|会议室, prob: 0.6975|
+|$(result_16)|$(result_17)|$(result_18)|$(result_19)|
 
 
 ### 性能评估

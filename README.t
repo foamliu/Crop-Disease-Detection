@@ -14,7 +14,8 @@
 
 我们使用AI Challenger 2018中的农作物病害检测数据集，其中包含61类47,393张图像。 数据集随机分为训练（70%）、验证（10%）、测试A（10%）与测试B（10%）四个子数据集。
 
- ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/dataset.png)
+### 数据预览
+ ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/dataset.png)
 
 你可以到 [这里](https://challenger.ai/dataset/pdd2018) 下载。
 
