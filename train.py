@@ -27,6 +27,7 @@ if __name__ == '__main__':
                                         height_shift_range=0.3,
                                         zoom_range=0.2,
                                         horizontal_flip=True,
+                                        vertical_flip=True,
                                         preprocessing_function=preprocess_input)
     valid_data_gen = ImageDataGenerator(preprocessing_function=preprocess_input)
 
@@ -70,8 +71,9 @@ if __name__ == '__main__':
         if pretrained_path is not None:
             new_model.load_weights(pretrained_path)
 
-    adam = keras.optimizers.Adam(lr=1e-6)
-    new_model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+    #adam = keras.optimizers.Adam(lr=1e-6)
+    sgd = keras.optimizers.SGD(lr=1e-3, momentum=0.9, decay=1e-6, nesterov=True)
+    new_model.compile(optimizer=sgd, loss='categorical_crossentropy', metrics=['accuracy'])
 
     callbacks = [tensor_board, model_checkpoint]
 
