@@ -9,7 +9,7 @@ from keras.utils import multi_gpu_model
 from config import img_height, img_width, batch_size, patience, train_data, valid_data, \
     num_train_samples, num_valid_samples, num_epochs, verbose
 from model import build_model
-from utils import get_available_gpus, get_available_cpus, ensure_folder, get_best_model
+from utils import get_available_gpus, ensure_folder, get_best_model
 
 if __name__ == '__main__':
     ensure_folder('models')
@@ -87,6 +87,4 @@ if __name__ == '__main__':
         initial_epoch=initial_epoch,
         callbacks=callbacks,
         verbose=verbose,
-        use_multiprocessing=True,
-        workers=int(get_available_cpus() * 0.80)
-    )
+        use_multiprocessing=False)
