@@ -1,5 +1,4 @@
 # import the necessary packages
-import csv
 import json
 import os
 import random
@@ -9,21 +8,16 @@ import keras.backend as K
 import numpy as np
 from keras.applications.inception_resnet_v2 import preprocess_input
 
-from config import best_model
+from config import train_data
 from model import build_model
+from utils import get_best_model
 
 if __name__ == '__main__':
+    best_model, epoch = get_best_model()
     model = build_model()
-    model_weights_path = os.path.join('models', best_model)
-    model.load_weights(model_weights_path)
+    model.load_weights(best_model)
 
-    with open('scene_classes.csv') as file:
-        reader = csv.reader(file)
-        scene_classes_list = list(reader)
-
-    scene_classes_dict = dict()
-    for item in scene_classes_list:
-        scene_classes_dict[int(item[0])] = item[1]
+    labels = [folder for folder in os.listdir(train_data) if os.path.isdir(os.path.join(train_data, folder))]
 
     test_path = 'data/test_a/'
     test_images = [f for f in os.listdir(test_path) if
@@ -46,8 +40,8 @@ if __name__ == '__main__':
         preds = model.predict(rgb_img)
         prob = np.max(preds)
         class_id = np.argmax(preds)
-        print(scene_classes_dict[class_id])
-        results.append({'label': scene_classes_dict[class_id], 'prob': '{:.4}'.format(prob)})
+        print(labels[class_id])
+        results.append({'label': labels[class_id], 'prob': '{:.4}'.format(prob)})
         cv.imwrite('images/{}_out.png'.format(i), image)
 
     print(results)
