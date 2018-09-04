@@ -46,7 +46,7 @@ $ tensorboard --logdir path_to_current_dir/logs
 ```
 
 ### Demo
-下载 [pre-trained model](https://github.com/foamliu/Scene-Classification/releases/download/v1.0/model.11-0.6262.hdf5) 放在 models 目录然后执行:
+下载 [pre-trained model](https://github.com/foamliu/Crop-Disease-Detection/releases/download/v1.0/model.11-0.6262.hdf5) 放在 models 目录然后执行:
 
 ```bash
 $ python demo.py
@@ -54,15 +54,15 @@ $ python demo.py
 
 1 | 2 | 3 | 4 |
 |---|---|---|---|
-|![image](https://github.com/foamliu/Scene-Classification/raw/master/images/0_out.png)  | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/1_out.png) | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/2_out.png)| ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/3_out.png) |
+|![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/0_out.png)  | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/1_out.png) | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/2_out.png)| ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/3_out.png) |
 |$(result_0)|$(result_1)|$(result_2)|$(result_3)|
-|![image](https://github.com/foamliu/Scene-Classification/raw/master/images/4_out.png)  | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/5_out.png) | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/6_out.png)| ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/7_out.png) |
+|![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/4_out.png)  | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/5_out.png) | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/6_out.png)| ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/7_out.png) |
 |$(result_4)|$(result_5)|$(result_6)|$(result_7)|
-|![image](https://github.com/foamliu/Scene-Classification/raw/master/images/8_out.png)  | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/9_out.png) |![image](https://github.com/foamliu/Scene-Classification/raw/master/images/10_out.png) | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/11_out.png)|
+|![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/8_out.png)  | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/9_out.png) |![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/10_out.png) | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/11_out.png)|
 |$(result_8)|$(result_9)|$(result_10)|$(result_11)|
-|![image](https://github.com/foamliu/Scene-Classification/raw/master/images/12_out.png)  | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/13_out.png) |![image](https://github.com/foamliu/Scene-Classification/raw/master/images/14_out.png)| ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/15_out.png)|
+|![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/12_out.png)  | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/13_out.png) |![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/14_out.png)| ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/15_out.png)|
 |$(result_12)|$(result_13)|$(result_14)|$(result_15)|
-|![image](https://github.com/foamliu/Scene-Classification/raw/master/images/16_out.png) | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/17_out.png) | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/18_out.png) | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/19_out.png) |
+|![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/16_out.png) | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/17_out.png) | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/18_out.png) | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/19_out.png) |
 |$(result_16)|$(result_17)|$(result_18)|$(result_19)|
 
 

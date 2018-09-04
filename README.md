@@ -46,7 +46,7 @@ $ tensorboard --logdir path_to_current_dir/logs
 ```
 
 ### Demo
-下载 [pre-trained model](https://github.com/foamliu/Scene-Classification/releases/download/v1.0/model.11-0.6262.hdf5) 放在 models 目录然后执行:
+下载 [pre-trained model](https://github.com/foamliu/Crop-Disease-Detection/releases/download/v1.0/model.11-0.6262.hdf5) 放在 models 目录然后执行:
 
 ```bash
 $ python demo.py
@@ -54,15 +54,15 @@ $ python demo.py
 
 1 | 2 | 3 | 4 |
 |---|---|---|---|
-|![image](https://github.com/foamliu/Scene-Classification/raw/master/images/0_out.png)  | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/1_out.png) | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/2_out.png)| ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/3_out.png) |
+|![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/0_out.png)  | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/1_out.png) | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/2_out.png)| ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/3_out.png) |
 |桃子  健康, prob: 0.9986|马铃薯早疫病一般, prob: 0.7913|桃疮痂病严重, prob: 0.9994|樱桃白粉病严重, prob: 0.6086|
-|![image](https://github.com/foamliu/Scene-Classification/raw/master/images/4_out.png)  | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/5_out.png) | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/6_out.png)| ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/7_out.png) |
+|![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/4_out.png)  | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/5_out.png) | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/6_out.png)| ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/7_out.png) |
 |马铃薯晚疫病一般, prob: 0.8683|番茄 花叶病毒病, prob: 0.9019|草莓叶枯病严重, prob: 0.6585|葡萄褐斑病严重, prob: 0.7148|
-|![image](https://github.com/foamliu/Scene-Classification/raw/master/images/8_out.png)  | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/9_out.png) |![image](https://github.com/foamliu/Scene-Classification/raw/master/images/10_out.png) | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/11_out.png)|
+|![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/8_out.png)  | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/9_out.png) |![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/10_out.png) | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/11_out.png)|
 |番茄黄化曲叶病毒病严重, prob: 0.891|番茄黄化曲叶病毒病严重, prob: 0.9954|马铃薯早疫病一般, prob: 0.7577|番茄 白粉病严重, prob: 0.8117|
-|![image](https://github.com/foamliu/Scene-Classification/raw/master/images/12_out.png)  | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/13_out.png) |![image](https://github.com/foamliu/Scene-Classification/raw/master/images/14_out.png)| ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/15_out.png)|
+|![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/12_out.png)  | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/13_out.png) |![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/14_out.png)| ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/15_out.png)|
 |马铃薯早疫病一般, prob: 0.888|桃疮痂病严重, prob: 0.9961|草莓叶枯病严重, prob: 0.4946|樱桃白粉病严重, prob: 0.7298|
-|![image](https://github.com/foamliu/Scene-Classification/raw/master/images/16_out.png) | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/17_out.png) | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/18_out.png) | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/19_out.png) |
+|![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/16_out.png) | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/17_out.png) | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/18_out.png) | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/19_out.png) |
 |桃疮痂病严重, prob: 0.9955|番茄晚疫病菌一般, prob: 0.9861|草莓叶枯病一般, prob: 0.9454|番茄早疫病严重, prob: 0.5013|
 
 
