@@ -1,7 +1,7 @@
-img_width, img_height = 299, 299
+img_width, img_height = 227, 227
 num_channels = 3
-train_data = 'data/train'
-valid_data = 'data/valid'
+train_data = 'data/AgriculturalDisease_trainingset'
+valid_data = 'data/AgriculturalDisease_validationset'
 num_classes = 80
 num_train_samples = 53879
 num_valid_samples = 7120
