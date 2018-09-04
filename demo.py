@@ -8,7 +8,7 @@ import keras.backend as K
 import numpy as np
 from keras.applications.inception_resnet_v2 import preprocess_input
 
-from config import train_data, test_a_data
+from config import train_data, test_a_data, img_height, img_width
 from model import build_model
 from utils import get_best_model
 
@@ -33,6 +33,7 @@ if __name__ == '__main__':
         filename = os.path.join(test_a_data, image_name)
         print('Start processing image: {}'.format(filename))
         image = cv.imread(filename)
+        image = cv.resize(image, (img_height, img_width), cv.INTER_CUBIC)
         rgb_img = cv.cvtColor(image, cv.COLOR_BGR2RGB)
         rgb_img = np.expand_dims(rgb_img, 0).astype(np.float32)
         rgb_img = preprocess_input(rgb_img)
