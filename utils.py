@@ -30,15 +30,15 @@ def ensure_folder(folder):
 
 def get_best_model():
     import re
-    pattern = 'model.(?P<epoch>\d+)-(?P<val_loss>[0-9]*\.?[0-9]*).hdf5'
+    pattern = 'model.(?P<epoch>\d+)-(?P<val_acc>[0-9]*\.?[0-9]*).hdf5'
     p = re.compile(pattern)
     files = [f for f in os.listdir('models/') if p.match(f)]
     filename = None
     epoch = None
     if len(files) > 0:
         epoches = [p.match(f).groups()[0] for f in files]
-        losses = [float(p.match(f).groups()[1]) for f in files]
-        best_index = int(np.argmin(losses))
+        accs = [float(p.match(f).groups()[1]) for f in files]
+        best_index = int(np.argmax(accs))
         filename = os.path.join('models', files[best_index])
         epoch = int(epoches[best_index])
         print('loading best model: {}'.format(filename))
