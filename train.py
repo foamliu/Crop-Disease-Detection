@@ -5,7 +5,6 @@ import tensorflow as tf
 from keras.applications.inception_resnet_v2 import preprocess_input
 from keras.callbacks import ModelCheckpoint, EarlyStopping
 from keras.callbacks import ReduceLROnPlateau
-from keras.optimizers import SGD
 from keras.preprocessing.image import ImageDataGenerator
 from keras.utils import multi_gpu_model
 
@@ -50,8 +49,8 @@ if __name__ == '__main__':
 
     # Callbacks
     tensor_board = keras.callbacks.TensorBoard(log_dir='./logs', histogram_freq=0, write_graph=True, write_images=True)
-    # early_stop = EarlyStopping('val_acc', patience=patience)
-    # reduce_lr = ReduceLROnPlateau('val_acc', factor=0.5, patience=int(patience / 4), verbose=1)
+    early_stop = EarlyStopping('val_acc', patience=patience)
+    reduce_lr = ReduceLROnPlateau('val_acc', factor=0.5, patience=int(patience / 4), verbose=1)
     trained_models_path = 'models/model'
     model_names = trained_models_path + '.{epoch:02d}-{val_loss:.4f}.hdf5'
     model_checkpoint = ModelCheckpoint(model_names, monitor='val_acc', verbose=1, save_best_only=True)
