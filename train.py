@@ -34,7 +34,7 @@ if __name__ == '__main__':
     train_generator = train_data_gen.flow_from_directory(train_data, (img_width, img_height), batch_size=batch_size,
                                                          class_mode='categorical', shuffle=True)
     valid_generator = valid_data_gen.flow_from_directory(valid_data, (img_width, img_height), batch_size=batch_size,
-                                                         class_mode='categorical', shuffle=True)
+                                                         class_mode='categorical', shuffle=False)
 
 
     class MyCbk(keras.callbacks.Callback):
