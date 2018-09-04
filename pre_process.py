@@ -32,3 +32,4 @@ if __name__ == '__main__':
     extract('ai_challenger_pdr2018_testA')
 
     flatten('AgriculturalDisease_trainingset')
+    flatten('AgriculturalDisease_validationset')
