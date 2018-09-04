@@ -8,7 +8,7 @@ import keras.backend as K
 import numpy as np
 from keras.applications.inception_resnet_v2 import preprocess_input
 
-from config import train_data
+from config import train_data, test_a_data
 from model import build_model
 from utils import get_best_model
 
@@ -19,9 +19,8 @@ if __name__ == '__main__':
 
     labels = [folder for folder in os.listdir(train_data) if os.path.isdir(os.path.join(train_data, folder))]
 
-    test_path = 'data/test_a/'
-    test_images = [f for f in os.listdir(test_path) if
-                   os.path.isfile(os.path.join(test_path, f)) and f.endswith('.jpg')]
+    test_images = [f for f in os.listdir(test_a_data) if
+                   os.path.isfile(os.path.join(test_a_data, f)) and f.endswith('.jpg')]
     num_samples = 20
     samples = random.sample(test_images, num_samples)
 
@@ -31,7 +30,7 @@ if __name__ == '__main__':
     results = []
     for i in range(len(samples)):
         image_name = samples[i]
-        filename = os.path.join(test_path, image_name)
+        filename = os.path.join(test_a_data, image_name)
         print('Start processing image: {}'.format(filename))
         image = cv.imread(filename)
         rgb_img = cv.cvtColor(image, cv.COLOR_BGR2RGB)
@@ -39,7 +38,7 @@ if __name__ == '__main__':
         rgb_img = preprocess_input(rgb_img)
         preds = model.predict(rgb_img)
         prob = np.max(preds)
-        class_id = np.argmax(preds)
+        class_id = int(np.argmax(preds))
         print(labels[class_id])
         results.append({'label': labels[class_id], 'prob': '{:.4}'.format(prob)})
         cv.imwrite('images/{}_out.png'.format(i), image)
