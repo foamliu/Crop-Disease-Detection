@@ -29,11 +29,11 @@ def flatten(folder):
             print(src_path + ' -> ' + dst_path)
             shutil.move(src_path, dst_path)
             num_folders += 1
-            num_images += len([f for f in os.listdir(dst_path) if f.endswith('.jpg')])
+            num_images += len([f for f in os.listdir(dst_path) if f.lower().endswith('.jpg')])
 
         if len(sub_folders) == 0:
             num_folders += 1
-            num_images += len([f for f in os.listdir(parent) if f.endswith('.jpg')])
+            num_images += len([f for f in os.listdir(parent) if f.lower().endswith('.jpg')])
         else:
             shutil.rmtree(parent)
 
