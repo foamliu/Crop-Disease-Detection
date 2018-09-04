@@ -26,12 +26,13 @@ def flatten(folder):
             src_path = os.path.join(parent, sub)
             dst_path = os.path.join(root, folder + sub)
             print(src_path + ' -> ' + dst_path)
-            #shutil.move(src_path, dst_path)
+            shutil.move(src_path, dst_path)
             num_total += 1
 
         if len(sub_folders) == 0:
             num_total += 1
-        #shutil.rmtree(parent)
+        else:
+            shutil.rmtree(parent)
 
     print(num_total)
 
