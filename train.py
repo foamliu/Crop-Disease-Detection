@@ -1,5 +1,3 @@
-import argparse
-
 import keras
 import tensorflow as tf
 from keras.applications.inception_resnet_v2 import preprocess_input
@@ -11,14 +9,14 @@ from keras.utils import multi_gpu_model
 from config import img_height, img_width, batch_size, patience, train_data, valid_data, \
     num_train_samples, num_valid_samples, num_epochs, verbose
 from model import build_model
-from utils import get_available_gpus, get_available_cpus, ensure_folder
+from utils import get_available_gpus, get_available_cpus, ensure_folder, get_best_model
 
 if __name__ == '__main__':
-    # Parse arguments
-    ap = argparse.ArgumentParser()
-    ap.add_argument("-p", "--pretrained", help="path to save pretrained model files")
-    args = vars(ap.parse_args())
-    pretrained_path = args["pretrained"]
+    best_model, epoch = get_best_model()
+    if best_model is None:
+        initial_epoch = 0
+    else:
+        initial_epoch = epoch + 1
 
     # prepare data augmentation configuration
     train_data_gen = ImageDataGenerator(shear_range=0.2,
@@ -60,16 +58,16 @@ if __name__ == '__main__':
     if num_gpu >= 2:
         with tf.device("/cpu:0"):
             model = build_model()
-            if pretrained_path is not None:
-                model.load_weights(pretrained_path)
+            if best_model is not None:
+                model.load_weights(best_model)
 
         new_model = multi_gpu_model(model, gpus=num_gpu)
         # rewrite the callback: saving through the original model and not the multi-gpu model.
         model_checkpoint = MyCbk(model)
     else:
         new_model = build_model()
-        if pretrained_path is not None:
-            new_model.load_weights(pretrained_path)
+        if best_model is not None:
+            new_model.load_weights(best_model)
 
     # adam = keras.optimizers.Adam(lr=1e-6)
     sgd = keras.optimizers.SGD(lr=1e-3, momentum=0.9, decay=1e-6, nesterov=True)
@@ -86,6 +84,7 @@ if __name__ == '__main__':
         validation_steps=num_valid_samples / batch_size,
         shuffle=True,
         epochs=num_epochs,
+        initial_epoch=initial_epoch,
         callbacks=callbacks,
         verbose=verbose,
         use_multiprocessing=True,
