@@ -1,6 +1,7 @@
 import os
-import zipfile
 import shutil
+import zipfile
+
 
 def ensure_folder(folder):
     if not os.path.exists(folder):
@@ -24,7 +25,9 @@ def flatten(folder):
             src_path = os.path.join(parent, sub)
             dst_path = os.path.join(root, folder + '_' + sub)
             print(src_path + ' -> ' + dst_path)
-            # shutil.move(src_path, dst_path)
+            shutil.move(src_path, dst_path)
+
+        shutil.rmtree(parent)
 
 
 if __name__ == '__main__':
