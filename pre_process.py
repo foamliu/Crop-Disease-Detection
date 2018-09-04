@@ -15,10 +15,11 @@ def extract(package):
 
 
 def flatten(folder):
-    folder_name = os.path.join('data', folder)
-    folders = [f for f in os.listdir(folder_name) if os.path.isdir(os.path.join(folder_name, f))]
+    root = os.path.join('data', folder)
+    folders = [f for f in os.listdir(root) if os.path.isdir(os.path.join(root, f))]
     for folder in folders:
-        sub_folders = [sub for sub in os.listdir(folder) if os.path.isdir(os.path.join(folder, sub))]
+        path = os.path.join(root, folder)
+        sub_folders = [sub for sub in os.listdir(path) if os.path.isdir(os.path.join(path, sub))]
         for sub in sub_folders:
             print(sub)
 
