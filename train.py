@@ -74,7 +74,7 @@ if __name__ == '__main__':
     sgd = keras.optimizers.SGD(lr=1e-3, momentum=0.9, decay=1e-6, nesterov=True)
     new_model.compile(optimizer=sgd, loss='categorical_crossentropy', metrics=['accuracy'])
 
-    callbacks = [tensor_board, model_checkpoint]
+    callbacks = [tensor_board, model_checkpoint, early_stop, reduce_lr]
 
     # fine tune the model
     new_model.fit_generator(
