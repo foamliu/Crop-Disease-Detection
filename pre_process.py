@@ -21,8 +21,9 @@ def flatten(folder):
         parent = os.path.join(root, folder)
         sub_folders = [sub for sub in os.listdir(parent) if os.path.isdir(os.path.join(parent, sub))]
         for sub in sub_folders:
-            path = os.path.join(parent, sub)
-            print(path)
+            src_path = os.path.join(parent, sub)
+            dst_path = parent = os.path.join(root, folder + '_' + sub)
+            print(src_path + ' -> ' + dst_path)
 
 
 if __name__ == '__main__':
