@@ -55,15 +55,15 @@ $ python demo.py
 1 | 2 | 3 | 4 |
 |---|---|---|---|
 |![image](https://github.com/foamliu/Scene-Classification/raw/master/images/0_out.png)  | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/1_out.png) | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/2_out.png)| ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/3_out.png) |
-|$(result_0)|$(result_1)|$(result_2)|$(result_3)|
+|番茄晚疫病菌一般, prob: 0.5776|苹果灰斑病, prob: 0.6683|马铃薯早疫病一般, prob: 0.2478|番茄晚疫病菌一般, prob: 0.4889|
 |![image](https://github.com/foamliu/Scene-Classification/raw/master/images/4_out.png)  | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/5_out.png) | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/6_out.png)| ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/7_out.png) |
-|$(result_4)|$(result_5)|$(result_6)|$(result_7)|
+|苹果黑星病严重, prob: 0.4044|番茄斑枯病一般, prob: 0.5698|辣椒  健康, prob: 0.3866|番茄晚疫病菌一般, prob: 0.04975|
 |![image](https://github.com/foamliu/Scene-Classification/raw/master/images/8_out.png)  | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/9_out.png) |![image](https://github.com/foamliu/Scene-Classification/raw/master/images/10_out.png) | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/11_out.png)|
-|$(result_8)|$(result_9)|$(result_10)|$(result_11)|
+|番茄黄化曲叶病毒病一般, prob: 0.1804|番茄晚疫病菌一般, prob: 0.7724|番茄 花叶病毒病, prob: 0.9591|番茄红蜘蛛损伤严重, prob: 0.391|
 |![image](https://github.com/foamliu/Scene-Classification/raw/master/images/12_out.png)  | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/13_out.png) |![image](https://github.com/foamliu/Scene-Classification/raw/master/images/14_out.png)| ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/15_out.png)|
-|$(result_12)|$(result_13)|$(result_14)|$(result_15)|
+|草莓叶枯病严重, prob: 0.3965|番茄疮痂病严重, prob: 0.4543|柑桔健康, prob: 0.1277|番茄晚疫病菌严重, prob: 0.2699|
 |![image](https://github.com/foamliu/Scene-Classification/raw/master/images/16_out.png) | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/17_out.png) | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/18_out.png) | ![image](https://github.com/foamliu/Scene-Classification/raw/master/images/19_out.png) |
-|$(result_16)|$(result_17)|$(result_18)|$(result_19)|
+|马铃薯晚疫病一般, prob: 0.7151|番茄斑点病严重, prob: 0.4571|番茄黄化曲叶病毒病严重, prob: 0.2466|苹果灰斑病, prob: 0.3973|
 
 
 ### 性能评估
