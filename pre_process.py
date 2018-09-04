@@ -16,6 +16,7 @@ def extract(package):
 
 
 def flatten(folder):
+    num_total = 0
     root = os.path.join('data', folder)
     folders = [f for f in os.listdir(root) if os.path.isdir(os.path.join(root, f))]
     for folder in folders:
@@ -23,11 +24,13 @@ def flatten(folder):
         sub_folders = [sub for sub in os.listdir(parent) if os.path.isdir(os.path.join(parent, sub))]
         for sub in sub_folders:
             src_path = os.path.join(parent, sub)
-            dst_path = os.path.join(root, folder + '_' + sub)
+            dst_path = os.path.join(root, folder + sub)
             print(src_path + ' -> ' + dst_path)
-            shutil.move(src_path, dst_path)
+            #shutil.move(src_path, dst_path)
+            num_total += 1
+        #shutil.rmtree(parent)
 
-        shutil.rmtree(parent)
+    print(num_total)
 
 
 if __name__ == '__main__':
