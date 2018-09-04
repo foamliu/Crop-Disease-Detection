@@ -12,6 +12,7 @@ from model import build_model
 from utils import get_available_gpus, get_available_cpus, ensure_folder, get_best_model
 
 if __name__ == '__main__':
+    ensure_folder('models')
     best_model, epoch = get_best_model()
     if best_model is None:
         initial_epoch = 0
@@ -75,7 +76,6 @@ if __name__ == '__main__':
 
     callbacks = [tensor_board, model_checkpoint]
 
-    ensure_folder('models')
     # fine tune the model
     new_model.fit_generator(
         train_generator,
