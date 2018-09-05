@@ -44,3 +44,14 @@ def get_best_model():
         print('loading best model: {}'.format(filename))
     return filename, epoch
 
+
+def get_highest_acc():
+    import re
+    pattern = 'model.(?P<epoch>\d+)-(?P<val_acc>[0-9]*\.?[0-9]*).hdf5'
+    p = re.compile(pattern)
+    acces = [float(p.match(f).groups()[1]) for f in os.listdir('models/') if p.match(f)]
+    if len(acces) == 0:
+        import sys
+        return sys.float_info.min
+    else:
+        return np.max(acces)
