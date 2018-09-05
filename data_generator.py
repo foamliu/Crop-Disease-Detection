@@ -44,9 +44,10 @@ class DataGenSequence(Sequence):
             if self.usage == 'train':
                 image = aug_pipe.augment_image(image)
 
-            batch_inputs[i_batch] = preprocess_input(image)
+            batch_inputs[i_batch] = image
             batch_target[i_batch] = to_categorical(class_id, num_classes)
 
+        batch_inputs = preprocess_input(batch_inputs)
         return batch_inputs, batch_target
 
     def on_epoch_end(self):
