@@ -39,6 +39,7 @@ class DataGenSequence(Sequence):
 
             image = cv.imread(filename)  # BGR
             print(filename)
+            print(image.shape)
             image = cv.resize(image, (img_height, img_width), cv.INTER_CUBIC)
             image = image[:, :, ::-1]  # RGB
 
