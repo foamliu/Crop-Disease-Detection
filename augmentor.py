@@ -1,3 +1,4 @@
+import imgaug as ia
 from imgaug import augmenters as iaa
 
 ### augmentors by https://github.com/aleju/imgaug
@@ -6,6 +7,16 @@ sometimes = lambda aug: iaa.Sometimes(0.5, aug)
 aug_pipe = iaa.Sequential(
     [
         iaa.Fliplr(0.5),  # horizontally flip 50% of all images
+
+        sometimes(iaa.Affine(
+            scale={"x": (0.8, 1.2), "y": (0.8, 1.2)},  # scale images to 80-120% of their size, individually per axis
+            translate_percent={"x": (-0.2, 0.2), "y": (-0.2, 0.2)},  # translate by -20 to +20 percent (per axis)
+            rotate=(-180, 180),  # rotate by -45 to +45 degrees
+            shear=(-16, 16),  # shear by -16 to +16 degrees
+            order=[0, 1],  # use nearest neighbour or bilinear interpolation (fast)
+            cval=(0, 255),  # if mode is constant, use a cval between 0 and 255
+            mode=ia.ALL  # use any of scikit-image's warping modes (see 2nd image from the top for examples)
+        )),
 
         # execute 0 to 5 of the following (less important) augmenters per image
         # don't execute all of them, as that would often be way too strong

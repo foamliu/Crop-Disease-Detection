@@ -1,16 +1,14 @@
 # encoding=utf-8
 import json
-import os
 
 import cv2 as cv
-import dlib
 import numpy as np
 from keras.applications.inception_resnet_v2 import preprocess_input
 from keras.utils import Sequence
+from keras.utils import to_categorical
 
 from augmentor import aug_pipe
 from config import img_height, img_width, batch_size, num_classes
-
 
 
 class DataGenSequence(Sequence):
@@ -24,7 +22,6 @@ class DataGenSequence(Sequence):
         with open(gt_file, 'r') as file:
             self.samples = json.load(file)
 
-
     def __len__(self):
         return int(np.ceil(len(self.samples) / float(batch_size)))
 
@@ -37,27 +34,18 @@ class DataGenSequence(Sequence):
 
         for i_batch in range(length):
             sample = self.samples[i + i_batch]
-            for j, role in enumerate(['a', 'p', 'n']):
-                image_name = sample[role]
-                filename = os.path.join(self.image_folder, image_name)
-                image = cv.imread(filename)  # BGR
-                image = image[:, :, ::-1]  # RGB
-                dets = self.detector(image, 1)
+            filename = sample['image_path']
+            class_id = sample['image_path']
 
-                num_faces = len(dets)
-                if num_faces > 0:
-                    # Find the 5 face landmarks we need to do the alignment.
-                    faces = dlib.full_object_detections()
-                    for detection in dets:
-                        faces.append(self.sp(image, detection))
-                    image = dlib.get_face_chip(image, faces[0], size=img_size)
-                else:
-                    image = cv.resize(image, (img_size, img_size), cv.INTER_CUBIC)
+            image = cv.imread(filename)  # BGR
+            image = cv.resize(image, (img_height, img_width), cv.INTER_CUBIC)
+            image = image[:, :, ::-1]  # RGB
 
-                if self.usage == 'train':
-                    image = aug_pipe.augment_image(image)
+            if self.usage == 'train':
+                image = aug_pipe.augment_image(image)
 
-                batch_inputs[j, i_batch] = preprocess_input(image)
+            batch_inputs[i_batch] = preprocess_input(image)
+            batch_target[i_batch] = to_categorical(class_id, num_classes)
 
         return batch_inputs, batch_target
 
@@ -73,10 +61,6 @@ if __name__ == '__main__':
     data_gen = DataGenSequence('train')
     item = data_gen.__getitem__(0)
     x, y = item
-    a = revert_pre_process(x[0])
-    p = revert_pre_process(x[1])
-    n = revert_pre_process(x[2])
+
     for i in range(10):
-        cv.imwrite('images/sample_a_{}.jpg'.format(i), a[i][:, :, ::-1])
-        cv.imwrite('images/sample_p_{}.jpg'.format(i), p[i][:, :, ::-1])
-        cv.imwrite('images/sample_n_{}.jpg'.format(i), n[i][:, :, ::-1])
+        cv.imwrite('images/sample_{}.jpg'.format(i), x[:, :, ::-1])
