@@ -67,7 +67,7 @@ if __name__ == '__main__':
     print(y.shape)
 
     for i in range(10):
-        image = x[i]
+        image = revert_pre_process(x[i])
         image = image[:, :, ::-1].astype(np.uint8)
         print(image)
         print(image.shape)
