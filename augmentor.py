@@ -55,24 +55,3 @@ aug_pipe = iaa.Sequential(
     ],
     random_order=True
 )
-
-if __name__ == '__main__':
-    import json
-    import random
-    import os
-    from config import image_folder, img_size
-    import cv2 as cv
-
-    print('loading train samples')
-    with open('data/train_triplets.json', 'r') as file:
-        samples = json.load(file)
-    samples = random.sample(samples, 30)
-
-    for i, sample in enumerate(samples):
-        image_name = sample['a']
-        filename = os.path.join(image_folder, image_name)
-        image_bgr = cv.imread(filename)
-        image_bgr = cv.resize(image_bgr, (img_size, img_size), cv.INTER_CUBIC)
-        cv.imwrite('images/imgaug_before_{}.png'.format(i), image_bgr)
-        image_bgr = aug_pipe.augment_image(image_bgr)
-        cv.imwrite('images/imgaug_after_{}.png'.format(i), image_bgr)
