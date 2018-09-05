@@ -67,4 +67,5 @@ if __name__ == '__main__':
     print(y.shape)
 
     for i in range(10):
-        cv.imwrite('images/sample_{}.jpg'.format(i), x[:, :, ::-1])
+        image = x[:, :, ::-1].astype(np.uint8)
+        cv.imwrite('images/sample_{}.jpg'.format(i), image)
