@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+import json
 import os
 import shutil
 import zipfile
@@ -41,6 +43,43 @@ def flatten(folder):
     print('num_images: ' + str(num_images))
 
 
+def load_labels():
+    import codecs
+    with codecs.open('labels.csv', 'r', 'utf-8') as file:
+        lines = file.readlines()
+
+    class2idx = dict()
+    idx2class = []
+    for line in lines:
+        print(line)
+        tokens = line.split(',')
+        id = int(tokens[0])
+        chinese_name = tokens[2].strip()
+        class2idx[chinese_name] = id
+        idx2class.append(chinese_name)
+
+    return idx2class, class2idx
+
+
+def gen_gt_file(folder, usage):
+    root = os.path.join('data', folder)
+    folders = [f for f in os.listdir(root) if os.path.isdir(os.path.join(root, f))]
+    idx2class, class2idx = load_labels()
+    gt_list = []
+    for folder in folders:
+        parent = os.path.join(root, folder)
+        idx = class2idx[folder.replace(' ', '')]
+        files = [f for f in os.listdir(parent) if f.lower().endswith('.jpg')]
+
+        for file in files:
+            path = os.path.join(parent, file)
+            gt_list.append({'class_id': idx, 'image_path': path})
+            print('{} -> {}'.format(file, idx))
+
+    with open('{}_gt_file.txt'.format(usage), 'w') as file:
+        json.dump(gt_list, file)
+
+
 if __name__ == '__main__':
     ensure_folder('data')
 
@@ -50,3 +89,6 @@ if __name__ == '__main__':
 
     flatten('AgriculturalDisease_trainingset')
     flatten('AgriculturalDisease_validationset')
+
+    gen_gt_file('AgriculturalDisease_trainingset', 'train')
+    gen_gt_file('AgriculturalDisease_validationset', 'valid')
