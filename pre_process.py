@@ -76,8 +76,8 @@ def gen_gt_file(folder, usage):
             gt_list.append({'class_id': idx, 'image_path': path})
             print('{} -> {}'.format(file, idx))
 
-    with open('{}_gt_file.txt'.format(usage), 'w') as file:
-        json.dump(gt_list, file)
+    with open('{}_gt_file.json'.format(usage), 'w') as file:
+        json.dump(gt_list, file, indent=4)
 
 
 if __name__ == '__main__':
