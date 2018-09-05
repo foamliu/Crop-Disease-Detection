@@ -22,6 +22,8 @@ class DataGenSequence(Sequence):
         with open(gt_file, 'r') as file:
             self.samples = json.load(file)
 
+        np.random.shuffle(self.samples)
+
     def __len__(self):
         return int(np.ceil(len(self.samples) / float(batch_size)))
 
