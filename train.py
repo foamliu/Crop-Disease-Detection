@@ -1,13 +1,11 @@
 import keras
 import tensorflow as tf
-from keras.applications.inception_resnet_v2 import preprocess_input
 from keras.callbacks import ModelCheckpoint, EarlyStopping
 from keras.callbacks import ReduceLROnPlateau
-from keras.preprocessing.image import ImageDataGenerator
 from keras.utils import multi_gpu_model
 
-from config import img_height, img_width, batch_size, patience, train_data, valid_data, \
-    num_train_samples, num_valid_samples, num_epochs, verbose
+from config import batch_size, patience, num_train_samples, num_valid_samples, num_epochs, verbose
+from data_generator import DataGenSequence
 from model import build_model
 from utils import get_available_gpus, ensure_folder, get_best_model
 
@@ -18,23 +16,6 @@ if __name__ == '__main__':
         initial_epoch = 0
     else:
         initial_epoch = epoch + 1
-
-    # prepare data augmentation configuration
-    train_data_gen = ImageDataGenerator(shear_range=0.2,
-                                        rotation_range=20.,
-                                        width_shift_range=0.3,
-                                        height_shift_range=0.3,
-                                        zoom_range=0.2,
-                                        horizontal_flip=True,
-                                        vertical_flip=True,
-                                        preprocessing_function=preprocess_input)
-    valid_data_gen = ImageDataGenerator(preprocessing_function=preprocess_input)
-
-    # generators
-    train_generator = train_data_gen.flow_from_directory(train_data, (img_width, img_height), batch_size=batch_size,
-                                                         class_mode='categorical', shuffle=True)
-    valid_generator = valid_data_gen.flow_from_directory(valid_data, (img_width, img_height), batch_size=batch_size,
-                                                         class_mode='categorical', shuffle=False)
 
 
     class MyCbk(keras.callbacks.Callback):
@@ -72,15 +53,15 @@ if __name__ == '__main__':
 
     # adam = keras.optimizers.Adam(lr=1e-6)
     sgd = keras.optimizers.SGD(lr=1e-3, momentum=0.9, decay=1e-6, nesterov=True)
-    new_model.compile(optimizer=sgd, loss='categorical_crossentropy', metrics=['accuracy'])
+    new_model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
     callbacks = [tensor_board, model_checkpoint, early_stop, reduce_lr]
 
     # fine tune the model
     new_model.fit_generator(
-        train_generator,
+        DataGenSequence('train'),
         steps_per_epoch=num_train_samples / batch_size,
-        validation_data=valid_generator,
+        validation_data=DataGenSequence('valid'),
         validation_steps=num_valid_samples / batch_size,
         shuffle=True,
         epochs=num_epochs,
