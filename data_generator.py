@@ -35,7 +35,7 @@ class DataGenSequence(Sequence):
         for i_batch in range(length):
             sample = self.samples[i + i_batch]
             filename = sample['image_path']
-            class_id = sample['image_path']
+            class_id = sample['class_id']
 
             image = cv.imread(filename)  # BGR
             image = cv.resize(image, (img_height, img_width), cv.INTER_CUBIC)
