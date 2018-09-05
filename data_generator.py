@@ -69,6 +69,5 @@ if __name__ == '__main__':
     for i in range(10):
         image = revert_pre_process(x[i])
         image = image[:, :, ::-1].astype(np.uint8)
-        print(image)
         print(image.shape)
         cv.imwrite('images/sample_{}.jpg'.format(i), image)
