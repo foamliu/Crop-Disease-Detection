@@ -63,6 +63,8 @@ if __name__ == '__main__':
     data_gen = DataGenSequence('train')
     item = data_gen.__getitem__(0)
     x, y = item
+    print(x.shape)
+    print(y.shape)
 
     for i in range(10):
         cv.imwrite('images/sample_{}.jpg'.format(i), x[:, :, ::-1])
