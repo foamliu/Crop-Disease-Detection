@@ -70,3 +70,12 @@ $ python demo.py
 ```bash
 $ python evaluate.py
 ```
+
+### 数据增强
+1 | 2 |
+|---|---|
+|![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/sample_0.png)  | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/sample_1.png) |
+|![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/sample_2.png)  | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/sample_3.png) |
+|![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/sample_4.png)  | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/sample_5.png) |
+|![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/sample_6.png)  | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/sample_7.png) |
+|![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/sample_8.png)  | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/sample_9.png) |
