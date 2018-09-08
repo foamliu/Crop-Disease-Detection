@@ -53,8 +53,7 @@ if __name__ == '__main__':
         if best_model is not None:
             new_model.load_weights(best_model)
 
-    # adam = keras.optimizers.Adam(lr=1e-6)
-    sgd = keras.optimizers.SGD(lr=1e-6, momentum=0.9, decay=1e-6, nesterov=True)
+    sgd = keras.optimizers.SGD(lr=1e-3, momentum=0.9, decay=1e-6, nesterov=True)
     new_model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
     callbacks = [tensor_board, model_checkpoint, early_stop, reduce_lr]

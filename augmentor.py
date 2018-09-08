@@ -6,6 +6,7 @@ sometimes = lambda aug: iaa.Sometimes(0.5, aug)
 
 aug_pipe = iaa.Sequential(
     [
+        iaa.CropAndPad(percent=(-0.25, 0.25)),
         iaa.Fliplr(0.5),  # horizontally flip 50% of all images
 
         sometimes(iaa.Affine(
