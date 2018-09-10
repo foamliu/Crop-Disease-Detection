@@ -20,12 +20,12 @@
 你可以到 [这里](https://challenger.ai/dataset/pdd2018) 下载。
 
 ### 性能
-用 4,739 张测试图片计算平均准确率(mAP)，结果如下：
+用 4991 张测试图片计算平均准确率(mAP)，结果如下：
 
 | |Test A|Test B|
 |---|---|---|
-|图片数|4739|4739|
-|Top3准确度|n/a|n/a|
+|图片数|4991|n/a|
+|准确度|n/a|n/a|
 
 ## 用法
 
@@ -70,12 +70,3 @@ $ python demo.py
 ```bash
 $ python evaluate.py
 ```
-
-### 数据增强
-1 | 2 |
-|---|---|
-|![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/sample_0.jpg)  | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/sample_1.jpg) |
-|![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/sample_2.jpg)  | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/sample_3.jpg) |
-|![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/sample_4.jpg)  | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/sample_5.jpg) |
-|![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/sample_6.jpg)  | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/sample_7.jpg) |
-|![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/sample_8.jpg)  | ![image](https://github.com/foamliu/Crop-Disease-Detection/raw/master/images/sample_9.jpg) |
