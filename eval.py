@@ -34,7 +34,7 @@ if __name__ == '__main__':
         preds = model.predict(rgb_img)
         prob = np.max(preds)
         class_id = int(np.argmax(preds))
-        print(labels[class_id])
+        #print(labels[class_id])
         results.append({'image_id': image_id, 'disease_class': class_id})
 
     with open('eval.json', 'w') as file:
