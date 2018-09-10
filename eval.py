@@ -21,7 +21,7 @@ if __name__ == '__main__':
     labels = [folder for folder in os.listdir(train_data) if os.path.isdir(os.path.join(train_data, folder))]
 
     test_images = [f for f in os.listdir(test_a_data) if
-                   os.path.isfile(os.path.join(test_a_data, f)) and f.endswith('.jpg')]
+                   os.path.isfile(os.path.join(test_a_data, f)) and f.lower().endswith('.jpg')]
 
     results = []
     for image_id in tqdm(test_images):
