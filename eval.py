@@ -38,6 +38,6 @@ if __name__ == '__main__':
         results.append({'image_id': image_id, 'disease_class': class_id})
 
     with open('eval.json', 'w') as file:
-        json.dump(results, file)
+        json.dump(results, file, indent=4)
 
     K.clear_session()
