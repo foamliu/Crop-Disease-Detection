@@ -53,7 +53,7 @@ if __name__ == '__main__':
         if best_model is not None:
             new_model.load_weights(best_model)
 
-    sgd = keras.optimizers.SGD(lr=1e-5, momentum=0.9, decay=1e-6, nesterov=True)
+    sgd = keras.optimizers.SGD(lr=1e-3, momentum=0.9, decay=1e-6, nesterov=True)
     new_model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
     callbacks = [tensor_board, model_checkpoint, early_stop, reduce_lr]
@@ -61,9 +61,9 @@ if __name__ == '__main__':
     # fine tune the model
     new_model.fit_generator(
         DataGenSequence('train'),
-        steps_per_epoch=num_train_samples / batch_size,
+        steps_per_epoch=num_train_samples // batch_size,
         validation_data=DataGenSequence('valid'),
-        validation_steps=num_valid_samples / batch_size,
+        validation_steps=num_valid_samples // batch_size,
         shuffle=True,
         epochs=num_epochs,
         initial_epoch=initial_epoch,
