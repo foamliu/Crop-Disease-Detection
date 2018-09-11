@@ -85,7 +85,7 @@ if __name__ == '__main__':
 
     extract('ai_challenger_pdr2018_trainingset')
     extract('ai_challenger_pdr2018_validationset')
-    extract('ai_challenger_pdr2018_testA')
+    extract('ai_challenger_pdr2018_testA_20180905')
 
     flatten('AgriculturalDisease_trainingset')
     flatten('AgriculturalDisease_validationset')
