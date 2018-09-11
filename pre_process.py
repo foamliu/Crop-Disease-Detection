@@ -83,8 +83,8 @@ def gen_gt_file(folder, usage):
 if __name__ == '__main__':
     ensure_folder('data')
 
-    extract('ai_challenger_pdr2018_trainingset')
-    extract('ai_challenger_pdr2018_validationset')
+    extract('ai_challenger_pdr2018_trainingset_20180905')
+    extract('ai_challenger_pdr2018_validationset_20180905')
     extract('ai_challenger_pdr2018_testA_20180905')
 
     flatten('AgriculturalDisease_trainingset')
