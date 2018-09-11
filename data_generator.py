@@ -1,5 +1,6 @@
 # encoding=utf-8
 import json
+import os
 
 import cv2 as cv
 import numpy as np
@@ -8,18 +9,21 @@ from keras.utils import Sequence
 from keras.utils import to_categorical
 
 from augmentor import aug_pipe
-from config import img_height, img_width, batch_size, num_classes
+from config import img_height, img_width, batch_size, num_classes, train_annot, valid_annot, train_image_folder, \
+    valid_image_folder
 
 
 class DataGenSequence(Sequence):
     def __init__(self, usage):
         self.usage = usage
         if self.usage == 'train':
-            gt_file = 'train_gt_file.json'
+            annot_file = train_annot
+            self.image_folder = train_image_folder
         else:
-            gt_file = 'valid_gt_file.json'
+            annot_file = valid_annot
+            self.image_folder = valid_image_folder
 
-        with open(gt_file, 'r') as file:
+        with open(annot_file, 'r') as file:
             self.samples = json.load(file)
 
         np.random.shuffle(self.samples)
@@ -36,8 +40,9 @@ class DataGenSequence(Sequence):
 
         for i_batch in range(length):
             sample = self.samples[i + i_batch]
-            filename = sample['image_path']
-            class_id = sample['class_id']
+            image_id = sample['image_id']
+            filename = os.path.join(self.image_folder, image_id)
+            class_id = sample['disease_class']
 
             image = cv.imread(filename)  # BGR
             # print(filename)

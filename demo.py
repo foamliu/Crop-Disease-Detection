@@ -8,7 +8,7 @@ import keras.backend as K
 import numpy as np
 from keras.applications.inception_resnet_v2 import preprocess_input
 
-from config import train_data, test_a_data, img_height, img_width
+from config import train_data, test_a_image_folder, img_height, img_width
 from model import build_model
 from utils import get_best_model
 
@@ -19,8 +19,8 @@ if __name__ == '__main__':
 
     labels = [folder for folder in os.listdir(train_data) if os.path.isdir(os.path.join(train_data, folder))]
 
-    test_images = [f for f in os.listdir(test_a_data) if
-                   os.path.isfile(os.path.join(test_a_data, f)) and f.endswith('.jpg')]
+    test_images = [f for f in os.listdir(test_a_image_folder) if
+                   os.path.isfile(os.path.join(test_a_image_folder, f)) and f.endswith('.jpg')]
     num_samples = 20
     samples = random.sample(test_images, num_samples)
 
@@ -30,7 +30,7 @@ if __name__ == '__main__':
     results = []
     for i in range(len(samples)):
         image_name = samples[i]
-        filename = os.path.join(test_a_data, image_name)
+        filename = os.path.join(test_a_image_folder, image_name)
         print('Start processing image: {}'.format(filename))
         image = cv.imread(filename)
         image = cv.resize(image, (img_height, img_width), cv.INTER_CUBIC)
