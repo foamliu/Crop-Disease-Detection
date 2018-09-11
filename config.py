@@ -1,4 +1,4 @@
-img_width, img_height = 227, 227
+img_width, img_height = 299, 299
 num_channels = 3
 train_data = 'data/AgriculturalDisease_trainingset'
 valid_data = 'data/AgriculturalDisease_validationset'
@@ -10,3 +10,4 @@ verbose = 1
 batch_size = 16
 num_epochs = 1000
 patience = 50
+FREEZE_LAYERS = 2
