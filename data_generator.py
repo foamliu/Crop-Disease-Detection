@@ -29,7 +29,7 @@ class DataGenSequence(Sequence):
         np.random.shuffle(self.samples)
 
     def __len__(self):
-        return len(self.samples) // float(batch_size)
+        return len(self.samples) // batch_size
 
     def __getitem__(self, idx):
         i = idx * batch_size
