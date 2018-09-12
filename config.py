@@ -18,3 +18,5 @@ batch_size = 16
 num_epochs = 1000
 patience = 50
 FREEZE_LAYERS = 2
+dropout_keep_prob = 0.8
+dropout_rate = 0.2
