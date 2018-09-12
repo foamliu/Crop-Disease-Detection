@@ -29,7 +29,7 @@ class DataGenSequence(Sequence):
         np.random.shuffle(self.samples)
 
     def __len__(self):
-        return int(np.ceil(len(self.samples) / float(batch_size)))
+        return len(self.samples) // float(batch_size)
 
     def __getitem__(self, idx):
         i = idx * batch_size
@@ -47,7 +47,7 @@ class DataGenSequence(Sequence):
             image = cv.imread(filename)  # BGR
             # print(filename)
             # print(image.shape)
-            image = cv.resize(image, (img_height, img_width), cv.INTER_CUBIC)
+            image = cv.resize(image, (img_width, img_height), cv.INTER_CUBIC)
             image = image[:, :, ::-1]  # RGB
 
             if self.usage == 'train':
