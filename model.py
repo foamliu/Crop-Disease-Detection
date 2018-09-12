@@ -12,8 +12,8 @@ def build_model():
     #x = Dropout(0.5)(x)
     predictions = Dense(num_classes, activation='softmax', name='predictions')(x)
     model = Model(inputs=base_model.input, outputs=predictions)
-    # for layer in model.layers[:FREEZE_LAYERS]:
-    #     layer.trainable = False
-    # for layer in model.layers[FREEZE_LAYERS:]:
-    #     layer.trainable = True
+    for layer in model.layers[:FREEZE_LAYERS]:
+        layer.trainable = False
+    for layer in model.layers[FREEZE_LAYERS:]:
+        layer.trainable = True
     return model
