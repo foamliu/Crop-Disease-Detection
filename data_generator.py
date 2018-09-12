@@ -50,8 +50,8 @@ class DataGenSequence(Sequence):
             image = cv.resize(image, (img_height, img_width), cv.INTER_CUBIC)
             image = image[:, :, ::-1]  # RGB
 
-            if self.usage == 'train':
-                image = aug_pipe.augment_image(image)
+            # if self.usage == 'train':
+            #     image = aug_pipe.augment_image(image)
 
             batch_inputs[i_batch] = preprocess_input(image)
             batch_target[i_batch] = to_categorical(class_id, num_classes)
