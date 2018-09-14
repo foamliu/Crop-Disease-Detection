@@ -9,7 +9,7 @@ import numpy as np
 from keras.applications.inception_resnet_v2 import preprocess_input
 from tqdm import tqdm
 
-from config import train_data, test_a_data, img_height, img_width
+from config import train_data, test_a_image_folder, img_height, img_width
 from model import build_model
 from utils import get_best_model
 
@@ -20,12 +20,12 @@ if __name__ == '__main__':
 
     labels = [folder for folder in os.listdir(train_data) if os.path.isdir(os.path.join(train_data, folder))]
 
-    test_images = [f for f in os.listdir(test_a_data) if
-                   os.path.isfile(os.path.join(test_a_data, f)) and f.lower().endswith('.jpg')]
+    test_images = [f for f in os.listdir(test_a_image_folder) if
+                   os.path.isfile(os.path.join(test_a_image_folder, f)) and f.lower().endswith('.jpg')]
 
     results = []
     for image_id in tqdm(test_images):
-        filename = os.path.join(test_a_data, image_id)
+        filename = os.path.join(test_a_image_folder, image_id)
         # print('Start processing image: {}'.format(filename))
         image = cv.imread(filename)
         image = cv.resize(image, (img_height, img_width), cv.INTER_CUBIC)
